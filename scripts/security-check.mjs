@@ -50,6 +50,20 @@ for (const required of [
   check(netlify.includes(required), `netlify.toml is missing security control: ${required}`);
 }
 
+const supabaseConfig = readFileSync(join(ROOT, "supabase", "config.toml"), "utf8");
+check(
+  /\[auth\][\s\S]*?enable_signup\s*=\s*false/.test(supabaseConfig),
+  "supabase/config.toml must disable public Auth signups",
+);
+check(
+  /\[auth\][\s\S]*?enable_anonymous_sign_ins\s*=\s*false/.test(supabaseConfig),
+  "supabase/config.toml must disable anonymous sign-ins",
+);
+check(
+  /\[auth\.email\][\s\S]*?enable_signup\s*=\s*false/.test(supabaseConfig),
+  "supabase/config.toml must disable public email signups",
+);
+
 if (errors.length) {
   console.error("Security regression check failed:\n");
   for (const error of errors) console.error(`- ${error}`);
