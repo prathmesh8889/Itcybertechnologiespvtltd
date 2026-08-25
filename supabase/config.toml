@@ -1,5 +1,16 @@
 project_id = "itcyber-technologies"
 
+# This is an invite-only admin application. Public visitors submit forms
+# through the rate-limited Edge Functions below and never need an Auth user.
+[auth]
+enable_signup = false
+enable_anonymous_sign_ins = false
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+secure_password_change = true
+
 # Public website forms call these endpoints without an admin session. Each
 # function performs strict origin, payload and rate-limit checks itself.
 [functions.submit-contact]
