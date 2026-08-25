@@ -1,5 +1,5 @@
 import React, { Suspense, useRef } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -185,6 +185,8 @@ export default function App() {
         <ScrollProgress />
         <CursorGlow />
         <Routes>
+          <Route path="/admin/login" element={<Navigate to="/itcyberadmin/login" replace />} />
+          <Route path="/admin" element={<Navigate to="/itcyberadmin" replace />} />
           <Route
             path="/itcyberadmin/login"
             element={
