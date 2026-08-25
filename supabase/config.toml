@@ -1,0 +1,15 @@
+project_id = "itcyber-technologies"
+
+# Public website forms call these endpoints without an admin session. Each
+# function performs strict origin, payload and rate-limit checks itself.
+[functions.submit-contact]
+verify_jwt = false
+
+[functions.submit-assessment]
+verify_jwt = false
+
+[functions.submit-career]
+verify_jwt = false
+
+[functions.prepare-resume-upload]
+verify_jwt = false
