@@ -1,4 +1,5 @@
 const baseUrl = (process.env.SITE_URL || "https://itcybertechnologies.netlify.app").replace(/\/$/, "");
+const expectedSupabaseRef = process.env.EXPECTED_SUPABASE_REF || "hmzxkhofrxvrylixxijx";
 const attempts = Number(process.env.SMOKE_ATTEMPTS || 20);
 const delayMs = Number(process.env.SMOKE_DELAY_MS || 15000);
 
@@ -43,8 +44,16 @@ async function main() {
   if (!/ITCYBER/i.test(html)) throw new Error("Homepage HTML does not contain ITCYBER branding");
   requireHeader(home, "x-content-type-options", (v) => v.toLowerCase() === "nosniff");
   requireHeader(home, "x-frame-options", (v) => v.toUpperCase() === "DENY");
-  requireHeader(home, "content-security-policy");
+  requireHeader(home, "content-security-policy", (v) => v.includes(`${expectedSupabaseRef}.supabase.co`));
   requireHeader(home, "strict-transport-security");
+
+  const entryScriptPath = html.match(/<script[^>]+src=["']([^"']+\.js)["']/i)?.[1];
+  if (!entryScriptPath) throw new Error("Homepage does not reference a JavaScript entry bundle");
+  const entryScript = await fetchWithRetry(entryScriptPath.startsWith("/") ? entryScriptPath : `/${entryScriptPath}`);
+  const entrySource = await entryScript.text();
+  if (!entrySource.includes(`${expectedSupabaseRef}.supabase.co`)) {
+    throw new Error(`Live JavaScript bundle is not configured for Supabase project ${expectedSupabaseRef}`);
+  }
   console.log("✓ Homepage and security headers");
 
   const routes = [
@@ -63,6 +72,7 @@ async function main() {
     "/privacy-policy",
     "/terms-of-service",
     "/cookie-policy",
+    "/admin/login",
     "/itcyberadmin/login",
   ];
 
