@@ -64,9 +64,10 @@ export const site: SiteConfig = {
   },
 
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/itcyber-technologies" },
-    { label: "Instagram", href: "https://www.instagram.com/itcyber.tech" },
-    { label: "X (Twitter)", href: "https://x.com/itcybertech" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/itcyber-pvt-ltd/posts/?feedView=all" },
+    { label: "Instagram", href: "https://www.instagram.com/itcybertechnologies?igsi=M25wMzNsNXk0ZG" },
+    { label: "X", href: "https://x.com/itcybertechin" },
+    { label: "GitHub", href: "https://github.com/kautukade" },
   ],
 
   announcement: {
