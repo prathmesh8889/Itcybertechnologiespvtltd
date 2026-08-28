@@ -45,10 +45,12 @@ function FooterSocials() {
   const live = (data ?? [])
     .map((s) => ({ label: s.label, href: safeHttpUrl(s.href) }))
     .filter((s): s is { label: string; href: string } => Boolean(s.href));
-  const fallback = site.socials
+  const configured = site.socials
     .map((s) => ({ label: s.label, href: safeHttpUrl(s.href) }))
     .filter((s): s is { label: string; href: string } => Boolean(s.href));
-  const links = live.length ? live : fallback;
+  const configuredLabels = new Set(configured.map((s) => s.label.toLowerCase()));
+  const liveExtras = live.filter((s) => !configuredLabels.has(s.label.toLowerCase()));
+  const links = [...configured, ...liveExtras];
   if (!links.length) return null;
   return (
     <div className="mt-6 flex gap-2 flex-wrap">
