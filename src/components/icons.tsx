@@ -220,7 +220,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       </svg>
       {!compact && (
         <span className="font-display font-bold text-[1.05rem] tracking-tight text-white leading-none">
-          ITCYBER<span className="text-brand-400">.</span>
+          ITCYBER TECHNOLOGIES<span className="text-brand-400">.</span>
         </span>
       )}
     </span>
