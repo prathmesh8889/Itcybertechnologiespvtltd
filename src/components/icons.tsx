@@ -206,20 +206,22 @@ export const IconChevron = (p: P) => (
   </svg>
 );
 
-/** Wordmark logo */
+/** ITCYBER wordmark with the supplied circular logo in place of the old IN mark. */
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-2.5">
-      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="14" fill="currentColor" className="text-ink-800" />
-        <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#1d2c4d" />
-        <path d="M18 20v24" stroke="#3E7BFF" strokeWidth="6" strokeLinecap="round" />
-        <circle cx="18" cy="17" r="3.4" fill="#56D9FF" />
-        <path d="M34 44V20l12 24V20" fill="none" stroke="#E8EEF9" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="46" cy="46" r="3.4" fill="#3DDC97" />
-      </svg>
+    <span className="inline-flex items-center gap-2.5 min-w-0">
+      <img
+        src="/itcyber-navbar-logo.jpg"
+        alt=""
+        aria-hidden="true"
+        width={36}
+        height={36}
+        decoding="async"
+        loading="eager"
+        className="w-9 h-9 shrink-0 object-contain rounded-full"
+      />
       {!compact && (
-        <span className="font-display font-bold text-[1.05rem] tracking-tight text-white leading-none">
+        <span className="font-display font-bold text-[0.82rem] sm:text-[1.05rem] tracking-tight text-white leading-none whitespace-nowrap overflow-visible">
           ITCYBER TECHNOLOGIES<span className="text-brand-400">.</span>
         </span>
       )}
