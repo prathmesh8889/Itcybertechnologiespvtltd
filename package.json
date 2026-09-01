@@ -16,7 +16,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
-    "@supabase/supabase-js": "^2.98.0",
+    "@supabase/supabase-js": "^2.112.4",
     "@types/three": "^0.169.0",
     "canvas-confetti": "^1.9.3",
     "date-fns": "^2.30.0",
