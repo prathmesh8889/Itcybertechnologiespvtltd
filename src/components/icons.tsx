@@ -211,14 +211,14 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className="inline-flex items-center gap-2.5 min-w-0">
       <img
-        src="/itcyber-navbar-logo.jpg"
+        src="/itcyber logo.jpeg"
         alt=""
         aria-hidden="true"
-        width={36}
-        height={36}
+        width={40}
+        height={40}
         decoding="async"
         loading="eager"
-        className="w-9 h-9 shrink-0 object-contain rounded-full"
+        className="w-10 h-10 shrink-0 object-contain"
       />
       {!compact && (
         <span className="font-display font-bold text-[0.82rem] sm:text-[1.05rem] tracking-tight text-white leading-none whitespace-nowrap overflow-visible">
