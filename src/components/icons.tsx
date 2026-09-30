@@ -218,7 +218,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         height={40}
         decoding="async"
         loading="eager"
-        className="w-10 h-10 shrink-0 object-contain"
+        className="w-10 h-10 shrink-0 object-contain rounded-xl"
       />
       {!compact && (
         <span className="font-display font-bold text-[0.82rem] sm:text-[1.05rem] tracking-tight text-white leading-none whitespace-nowrap overflow-visible">
